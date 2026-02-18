@@ -1,141 +1,19 @@
-﻿<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quizionix | Home</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <title>Quizionix | Loading</title>
+  <link rel="stylesheet" href="assets/css/base.css?v=3" />
 </head>
-<body class="app-page home-page">
-  <div class="bg-orb bg-orb-a" aria-hidden="true"></div>
-  <div class="bg-orb bg-orb-b" aria-hidden="true"></div>
-  <header class="top-header">
-    <nav class="top-nav" aria-label="Primary">
-      <a href="home.html" class="brand brand-animated">Quizionix</a>
-      <div class="nav-links" role="tablist" aria-label="Home Sections">
-        <button class="nav-link active" type="button" data-view-target="home" role="tab" aria-selected="true">Home</button>
-        <button class="nav-link" type="button" data-view-target="signin" role="tab" aria-selected="false">Sign In</button>
-        <button class="nav-link" type="button" data-view-target="signup" role="tab" aria-selected="false">Sign Up</button>
-        <a class="nav-link play-link" href="game.html">Play</a>
-        <button class="nav-link" id="home-theme-toggle" type="button" aria-label="Toggle theme">Theme</button>
-      </div>
-    </nav>
-  </header>
-
-  <main class="home-shell">
-    <section class="status-panel unified-panel" aria-label="Status Panel Preview">
-      <h2>Status Panel</h2>
-      <div class="status-grid">
-        <p title="Current learning zone"><strong>Zone</strong><span id="home-status-zone">Zone 1</span></p>
-        <p title="Current branch"><strong>Branch</strong><span id="home-status-branch">Branch 1</span></p>
-        <p title="Adaptive difficulty"><strong>Difficulty</strong><span id="home-status-difficulty" class="difficulty-pill difficulty-beginner">Beginner</span></p>
-        <p title="Mastery percentage"><strong>Mastery</strong><span id="home-status-mastery">0%</span></p>
-        <p title="Knowledge Health"><strong>Knowledge Health</strong><span id="home-status-kh">100/100</span></p>
-      </div>
-      <div class="kh-meter" aria-hidden="true">
-        <span id="home-kh-fill" style="width:100%"></span>
-      </div>
-    </section>
-
-    <section class="home-view active" id="home-view-home" data-view="home" aria-labelledby="home-hero-title">
-      <article class="hero-panel unified-panel fade-in-up">
-        <p class="eyebrow">Research-Safe Adaptive Learning RPG</p>
-        <h1 id="home-hero-title">Master Topics Through Branch Challenges</h1>
-        <p class="tagline">Learn STEM, Level Up, Master Your Knowledge</p>
-        <p class="hero-copy">Train across zones, clear branch bosses, and monitor Knowledge Health and mastery growth in one unified interface.</p>
-        <div class="cta-row">
-          <a href="game.html" class="btn cta-btn" id="play-btn">Play Quizionix</a>
-          <button class="btn secondary-btn cta-btn" type="button" data-view-target="signin">Sign In</button>
-          <button class="btn ghost-btn cta-btn" type="button" data-view-target="signup">Sign Up</button>
-          <button class="btn ghost-btn cta-btn" id="guest-info-button" type="button">Play as Guest</button>
-        </div>
-        <div class="scene-graphic" aria-hidden="true">
-          <div class="scene-grid"></div>
-          <div class="scene-mascot"></div>
-          <div class="scene-card scene-card-1">Zone</div>
-          <div class="scene-card scene-card-2">KH</div>
-          <div class="scene-card scene-card-3">Boss</div>
-        </div>
-      </article>
-
-      <article class="preview-panel unified-panel fade-in-up delay-1" aria-labelledby="preview-title">
-        <h2 id="preview-title">Mini Game Preview</h2>
-        <div class="preview-row"><span>Zone</span><strong>Zone 1: Foundations</strong></div>
-        <div class="preview-row"><span>Branch</span><strong>Branch 1: Intro Concepts</strong></div>
-        <div class="preview-row"><span>Difficulty</span><strong class="difficulty-pill difficulty-beginner">Beginner</strong></div>
-        <div class="preview-row"><span>Mastery</span><strong>0%</strong></div>
-        <div class="kh-meter" aria-label="Knowledge Health Preview">
-          <span id="preview-kh-fill" style="width:100%"></span>
-        </div>
-        <p class="muted">KH starts full and adapts as you answer and pace your attempts.</p>
-        <div class="mascot-dot" aria-hidden="true"></div>
-      </article>
-
-      <article class="mastery-panel unified-panel fade-in-up delay-2" aria-labelledby="home-mastery-title">
-        <h2 id="home-mastery-title">Mastery Map Preview</h2>
-        <div id="home-mastery-map" class="map-preview">
-          <div class="map-node done">Zone 1</div>
-          <div class="map-node current">Branch 1</div>
-          <div class="map-node locked">Zone 2</div>
-        </div>
-      </article>
-
-      <article class="badge-panel unified-panel fade-in-up delay-3" aria-labelledby="home-badge-title">
-        <h2 id="home-badge-title">Badges Preview</h2>
-        <div class="badge-list"><span class="badge-chip">No badges yet</span></div>
-      </article>
-    </section>
-
-    <section class="home-view" id="home-view-signin" data-view="signin" aria-labelledby="signin-title" hidden>
-      <article class="auth-panel unified-panel">
-        <h2 id="signin-title">Sign In</h2>
-        <p class="muted">Continue your progression from where you left off.</p>
-        <form class="auth-form" id="signin-form">
-          <label for="signin-email">Email</label>
-          <input id="signin-email" type="email" autocomplete="email" required />
-          <label for="signin-password">Password</label>
-          <input id="signin-password" type="password" autocomplete="current-password" required />
-          <button class="btn" type="submit">Continue</button>
-        </form>
-        <p id="signin-feedback" class="form-feedback" aria-live="polite"></p>
-      </article>
-    </section>
-
-    <section class="home-view" id="home-view-signup" data-view="signup" aria-labelledby="signup-title" hidden>
-      <article class="auth-panel unified-panel">
-        <h2 id="signup-title">Sign Up</h2>
-        <p class="muted">Create a learner profile and begin Zone 1.</p>
-        <form class="auth-form" id="signup-form">
-          <label for="signup-name">Name</label>
-          <input id="signup-name" type="text" autocomplete="name" required />
-          <label for="signup-email">Email</label>
-          <input id="signup-email" type="email" autocomplete="email" required />
-          <label for="signup-password">Password</label>
-          <input id="signup-password" type="password" autocomplete="new-password" required />
-          <button class="btn" type="submit">Create Account</button>
-        </form>
-        <p id="signup-feedback" class="form-feedback" aria-live="polite"></p>
-      </article>
-    </section>
-  </main>
-
-  <section class="guest-modal" id="guest-info-modal" hidden aria-live="polite" aria-label="Guest Mode Info">
-    <div class="guest-modal-card unified-panel">
-      <h2>Guest Mode</h2>
-      <p class="muted">Play immediately without account save. Research-safe anonymized gameplay metrics still run.</p>
-      <button class="btn" id="guest-info-close" type="button">Close</button>
-    </div>
+<body data-page="loading">
+  <section class="site-loader minimalist-loader" aria-live="polite" aria-label="Loading Quizionix">
+    <video autoplay muted loop playsinline>
+      <source src="assets/media/intro/website-logo-animated.mp4" type="video/mp4" />
+    </video>
+    <span class="loader-ring" aria-hidden="true"></span>
   </section>
-
-  <footer class="site-footer">
-    <a href="#" class="footer-link">About</a>
-    <a href="#" class="footer-link">Privacy</a>
-    <a href="#" class="footer-link">Contact</a>
-  </footer>
-
-  <script type="module" src="script.js"></script>
+  <script type="module" src="assets/js/app.js"></script>
 </body>
 </html>
+

@@ -1,138 +1,45 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quizionix Game</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <title>Quizionix | Game</title>
+  <link rel="stylesheet" href="assets/css/base.css?v=4" />
+  <link rel="stylesheet" href="assets/css/ui.css?v=4" />
+  <link rel="stylesheet" href="assets/css/game.css?v=2" />
 </head>
-<body class="app-page game-page">
-  <div class="bg-orb bg-orb-a" aria-hidden="true"></div>
-  <div class="bg-orb bg-orb-b" aria-hidden="true"></div>
-  <main class="game-shell">
-    <header class="game-header unified-panel">
-      <div>
-        <h1>Quizionix</h1>
-        <p class="subtitle">Adaptive challenges with mastery, badges, and research-safe logging.</p>
-      </div>
-      <nav class="mini-nav" aria-label="Game Navigation">
-        <a href="home.html" class="nav-link">Home</a>
-        <a href="game.html" class="nav-link active">Game</a>
-        <button class="nav-link" id="theme-toggle-button" type="button" aria-label="Toggle theme">Theme</button>
-        <button class="nav-link" id="animation-toggle-button" type="button" aria-label="Toggle animations">Animations</button>
-      </nav>
-      <button id="menu-toggle-button" class="menu-toggle-button" type="button" aria-expanded="false">Menu</button>
+<body data-page="game">
+  <main class="page game-shell">
+    <header class="card hud-bar">
+      <p>Zone: <span id="g-zone">Zone 1</span></p>
+      <p>Branch: <span id="g-branch">Branch 1</span></p>
+      <p>Difficulty: <span id="g-difficulty">Beginner</span></p>
+      <p>Mastery: <span id="g-mastery">0%</span></p>
+      <p>Knowledge Health: <span id="g-kh">100</span></p>
     </header>
 
-    <section class="status-panel unified-panel" aria-label="Status Panel">
-      <h2>Status Panel</h2>
-      <div class="status-grid">
-        <p title="Current learning zone"><strong>Zone</strong><span id="active-zone">-</span></p>
-        <p title="Current branch"><strong>Branch</strong><span id="active-branch">-</span></p>
-        <p title="Adaptive difficulty"><strong>Difficulty</strong><span id="difficulty-level" class="difficulty-pill difficulty-beginner">Beginner</span></p>
-        <p title="Mastery percentage"><strong>Mastery</strong><span id="mastery-level">0%</span></p>
-        <p title="Knowledge Health"><strong>Knowledge Health</strong><span id="knowledge-health">100</span><span>/100</span></p>
-        <p title="Total points"><strong>Total Points</strong><span id="total-points">0</span></p>
-      </div>
-      <div class="kh-meter" aria-hidden="true">
-        <span id="kh-fill"></span>
-      </div>
-      <p id="challenge-timer" class="challenge-timer">Elapsed: 00:00 | Multiplier: 3.00x</p>
-    </section>
-
-    <section class="progress-map-panel unified-panel" aria-labelledby="progress-map-title">
-      <h2 id="progress-map-title">Mastery Progress Map</h2>
-      <p class="lead-text">Track zones, branches, bosses, and badges without leaderboard pressure.</p>
-      <div class="utility-actions">
-        <button id="export-json-button" type="button">Export Research JSON</button>
-        <button id="copy-json-button" type="button">Copy Research JSON</button>
-      </div>
-      <p id="export-status" class="content-test-output" aria-live="polite"></p>
-      <div id="mastery-map"></div>
-      <h3>Rewards & Badges</h3>
-      <div id="badge-panel"></div>
-      <p id="badge-notification" class="badge-notification" aria-live="polite"></p>
-    </section>
-
-    <section id="zone-screen" class="screen active unified-panel" aria-labelledby="zone-title">
-      <h2 id="zone-title">Choose Your Zone</h2>
-      <p class="lead-text">Select a zone and branch path, then clear branch objectives and boss node.</p>
-      <div class="utility-actions">
-        <button id="test-unlock-button" type="button">Test Unlock 1 Zone</button>
-        <button id="content-test-button" type="button">Run Content Smoke Test</button>
-      </div>
-      <p id="content-test-output" class="content-test-output"></p>
-      <div id="zone-list" class="zone-list"></div>
-
-      <div id="branch-panel" class="branch-panel" hidden>
-        <h3>Select Branch</h3>
-        <p id="branch-panel-label">Choose a subtopic path.</p>
-        <div id="branch-list" class="zone-list"></div>
-      </div>
-    </section>
-
-    <section id="challenge-screen" class="screen unified-panel" aria-labelledby="challenge-title">
-      <h2 id="challenge-title">Challenge Node</h2>
-
-      <article class="challenge-card">
-        <p id="boss-indicator"></p>
-        <p id="challenge-prompt">Challenge loading...</p>
-      </article>
-
-      <div id="feedback-panel" class="feedback-panel" aria-live="polite">
-        <p id="feedback-result" class="feedback-result">Result will appear here.</p>
-        <p id="feedback-branch" class="feedback-line">Branch progress: -</p>
-        <p id="feedback-boss" class="feedback-line">Boss progress: -</p>
-        <p id="feedback-kh" class="feedback-line">KH: 100/100</p>
-        <p id="feedback-difficulty" class="feedback-line">Difficulty: Beginner</p>
-        <p id="feedback-badge" class="feedback-line">Badges: none</p>
+    <section class="card play-panel">
+      <div class="row">
+        <button id="branch-btn" class="btn" type="button">Branch Select</button>
+        <button id="boss-btn" class="btn" type="button">Boss Node</button>
+        <a class="btn" href="dashboard.html">Back to Dashboard</a>
       </div>
 
-      <form id="answer-form" class="answer-form">
-        <label id="answer-label">Your Answer</label>
-        <div id="answer-choices" class="answer-choices" role="group" aria-label="Answer choices"></div>
-        <div id="answer-text-wrap" class="answer-text-wrap" hidden>
-          <input id="answer-text-input" type="text" autocomplete="off" placeholder="Type answer and press Enter" />
-        </div>
-      </form>
-
-      <p id="feedback" class="feedback" aria-live="polite"></p>
-      <div id="end-stats-panel" class="end-stats" hidden>
-        <h3>Quiz Completion Summary</h3>
-        <p id="end-stats-text"></p>
+      <h1 id="q-title">Challenge</h1>
+      <p id="q-text">Loading question...</p>
+      <div id="answer-options" class="answers"></div>
+      <div class="game-actions">
+        <button class="btn" id="prev-btn" type="button">Previous</button>
+        <button class="btn primary" id="submit-btn" type="button">Submit</button>
+        <button class="btn" id="next-btn" type="button">Next</button>
       </div>
-      <button id="back-button" class="back-button" type="button">Back to Zones</button>
-    </section>
-
-    <section id="branch-complete-screen" class="screen unified-panel" aria-labelledby="branch-complete-title">
-      <h2 id="branch-complete-title">Branch Completed</h2>
-      <p id="branch-complete-message" class="lead-text">Great work. Move to the next branch?</p>
-      <div class="branch-complete-actions">
-        <button id="next-branch-yes" type="button">Yes, Next Branch</button>
-        <button id="next-branch-no" type="button">No, Stay in Zone</button>
-      </div>
+      <div class="meter"><span id="question-progress"></span></div>
+      <p id="feedback" class="msg"></p>
+      <p id="hint" class="muted">Hint appears here after incorrect attempts.</p>
+      <p id="points" class="muted">Points: 0</p>
     </section>
   </main>
-
-  <aside id="game-menu" class="game-menu" hidden aria-label="Game Menu">
-    <h3>Game Menu</h3>
-    <div class="game-menu-actions">
-      <button id="menu-resume-button" type="button">Resume</button>
-      <button id="menu-sfx-button" type="button">SFX: On</button>
-      <button id="menu-zones-button" type="button">Go To Zones</button>
-      <button id="menu-restart-button" type="button">Restart Session</button>
-    </div>
-  </aside>
-
-  <div id="pop-up-container" aria-live="polite"></div>
-  <audio id="sfx-correct" preload="none"></audio>
-  <audio id="sfx-wrong" preload="none"></audio>
-  <audio id="sfx-badge" preload="none"></audio>
-  <audio id="sfx-boss" preload="none"></audio>
-
-  <script type="module" src="script.js"></script>
+  <script type="module" src="assets/js/app.js"></script>
 </body>
 </html>
+

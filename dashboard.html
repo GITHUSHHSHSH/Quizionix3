@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quizionix | Dashboard</title>
+  <link rel="stylesheet" href="assets/css/base.css?v=3" />
+  <link rel="stylesheet" href="assets/css/ui.css?v=3" />
+</head>
+<body data-page="dashboard">
+  <main class="page">
+    <header class="card top-nav">
+      <h1>Quizionix Hub</h1>
+      <nav class="row">
+        <a class="link" href="dashboard.html">Dashboard</a>
+        <a class="link" href="progress.html">Progress</a>
+        <a class="link" href="#badges">Badges</a>
+        <button id="logout-btn" class="btn" type="button">Logout</button>
+      </nav>
+    </header>
+
+    <section class="dashboard-grid">
+      <aside class="card sidebar">
+        <div class="avatar" id="player-avatar">Q</div>
+        <h2 id="welcome-user">Hello Player</h2>
+        <video class="sidebar-quix" autoplay muted loop playsinline>
+          <source src="assets/media/images/quix-idle.webm" type="video/webm" />
+        </video>
+        <p class="muted">Choose mode and launch your next run.</p>
+        <a class="btn primary" href="game.html">Start Game</a>
+        <a class="btn" href="progress.html">Progress</a>
+        <a class="btn" href="#badges">Badges</a>
+      </aside>
+
+      <section class="card main-panel">
+        <h2>Player Status</h2>
+        <div class="hud">
+          <p>Level: <span id="hud-level">1</span></p>
+          <p>Overall Mastery: <span id="hud-mastery">0%</span></p>
+          <p>Badges: <span id="hud-badges">0</span></p>
+        </div>
+
+        <h3>Mode Select</h3>
+        <div class="mode-grid">
+          <button class="mode-card" data-mode="quiz">Mini Quiz</button>
+          <button class="mode-card" data-mode="boss">Boss Challenge</button>
+          <button class="mode-card" data-mode="practice">Practice Run</button>
+        </div>
+
+        <div id="badges" class="card badges-panel">
+          <h3>Badges</h3>
+          <div id="dashboard-badges" class="row"></div>
+        </div>
+      </section>
+    </section>
+  </main>
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>
+
+
